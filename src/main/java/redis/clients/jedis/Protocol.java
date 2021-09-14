@@ -75,6 +75,9 @@ public final class Protocol {
   public static final byte[] BYTES_TRUE = toByteArray(1);
   public static final byte[] BYTES_FALSE = toByteArray(0);
 
+  public static final byte[] BYTES_KV_FETCH = {0x1C, 0x70};
+  public static final byte[] BYTES_KV_UPDATE = {0x1C, 0x71};
+
   private Protocol() {
     // this prevent the class from instantiation
   }

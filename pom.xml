@@ -66,6 +66,13 @@
 			<type>jar</type>
 			<scope>compile</scope>
 		</dependency>
+		<dependency>
+			<groupId>com.savarese</groupId>
+			<artifactId>rocksaw</artifactId>
+			<version>1.0.1</version>
+			<scope>system</scope>
+			<systemPath>${project.basedir}/lib/rocksaw-1.0.1.jar</systemPath>
+		  </dependency>
 	</dependencies>
 
   <distributionManagement>
@@ -149,6 +156,22 @@
 	      <configuration>
 		      <configFile>${project.basedir}/hbase-formatter.xml</configFile>
 	      </configuration>
+      </plugin>
+	  <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-dependency-plugin</artifactId>
+        <executions>
+            <execution>
+                <id>copy</id>
+                <phase>package</phase>
+                <goals>
+                    <goal>copy-dependencies</goal>
+                </goals>
+                <configuration>
+                    <outputDirectory>${project.build.directory}/lib</outputDirectory>
+                </configuration>
+            </execution>
+        </executions>
       </plugin>
 			<plugin>
 			  <artifactId>maven-jar-plugin</artifactId>
