@@ -22,8 +22,7 @@ import redis.clients.util.RedisOutputStream;
 import redis.clients.util.SafeEncoder;
 
 import com.savarese.rocksaw.net.RawSocket;
-import static com.savarese.rocksaw.net.RawSocket.PF_INET;
-import static com.savarese.rocksaw.net.RawSocket.PF_INET6;
+import static com.savarese.rocksaw.net.RawSocket.PF_PACKET;
 import static com.savarese.rocksaw.net.RawSocket.getProtocolByName;
 
 public class Connection implements Closeable {
@@ -43,9 +42,11 @@ public class Connection implements Closeable {
   private SSLSocketFactory sslSocketFactory;
   private SSLParameters sslParameters;
   private HostnameVerifier hostnameVerifier;
-  
+
   private RawSocket fpga_socket;
-  private String fpga_addr = 
+  private String fpga_hwaddr;
+  private String if_name;
+  private int if_idx;
 
   public Connection() {
   }
